@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Product List</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-top: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    overflow: hidden;
+    width: 250px;
+    text-align: left;
+    padding: 15px;
+}
+
+.card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.card .btn-container {
+    margin-top: 10px;
+}
+
+.btn-custom {
+    background: linear-gradient(to right, #fff, #25b7c4);
+    border: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.card .btn-link {
+    color: #25b7c4;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.card .btn-link:hover {
+    text-decoration: underline;
+}
+
+.made-with-love {
+    margin-top: 40px;
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+}
+
+.made-with-love i {
+    font-style: normal;
+    color: #F50057;
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+}
+
+.made-with-love a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.made-with-love a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+
+
+</style>
+ 
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		setTimeout(function() {
+			var h2Elements = document.querySelectorAll('h2, h3');
+			h2Elements.forEach(function(element) {
+				element.style.display = 'none';
+			});
+		}, 1000);
+	});
+</script>
+</head>
+<body>
+
+<h2 th:text="${fail}"></h2>
+	<h2 th:text="${pass}"></h2>
+    <h1>PRODUCT LIST</h1>
+    <div class="card-container">
+        <div class="card" th:each="product : ${products}">
+            <img th:src="@{'data:image/jpeg;base64,' + ${product.generateBase64Image()}}" alt="Product Image">
+            <B><p th:text="${product.name}"></p></B>
+            <p>Category: <span th:text="${product.category}"></span></p>
+            <p>Price: <span th:text="${product.price} + '₹'"></span></p>
+            <p>Stock: <span th:text="${product.stock}"></span></p>
+            <div class="btn-container">
+                <a th:href="@{'/customer/cart-remove/' + ${product.id}}" class="btn-link"><b>-</b></a>
+                <span th:text="${product.getQuantity(items)}"></span>
+                <a th:href="@{'/customer/cart-add/' + ${product.id}}" class="btn-link"><b>+</b></a>
+            </div><br>
+              <a href="/customer/fetch-cart" class="btn-custom">Proceed to Cart</a>
+        </div>
+    </div>
+
+     <br><br>
+    <a href="/" class="btn-custom">Back</a>
+   
+</body>
+</html>

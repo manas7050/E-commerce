@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Home</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/3761b383139957.5e7bc85ff0d16.jpg");
+}
+
+h2 {
+	color: green;
+}
+
+h3 {
+	color: red;
+}
+
+h1 {
+	color: #333;
+}
+
+button {
+   
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin: 25px;
+	text-decoration: none;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+a{
+
+}
+.card {
+margin:50px auto;
+	width: 250px;
+	height: 300px;
+	border-radius: 50px;
+	background: #e0e0e0;
+	box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px orange;
+}
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		setTimeout(function() {
+			var h2Elements = document.querySelectorAll('h2, h3');
+			h2Elements.forEach(function(element) {
+				element.style.display = 'none';
+			});
+		}, 1000);
+	});
+</script>
+</head>
+
+<body>
+	<h2 th:text="${pass}"></h2>
+	<h3 th:text="${fail}"></h3>
+	<h1>Admin Home</h1>
+	<div class="card">
+	
+	<a href="/admin/add-product"><button>Add Product</button></a>
+	<a href="/admin/fetch-products"><button>Fetch Products</button></a>
+	<a href="/logout"><button>Logout</button></a>
+	</div>
+</body>
+
+</html>

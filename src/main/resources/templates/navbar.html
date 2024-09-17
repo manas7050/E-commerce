@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div class="navBar">
+		<div class="logoSection">
+			<div>
+				<a href="/"><img src="" th:src="@{/images/flipkart-logo.png}"
+					class="flipkart-logo" alt="flipkart-logo" /></a>
+			</div>
+			<div>
+				<p class="logo-text">
+					Explore <span id="plus">Plus+</span>
+				</p>
+			</div>
+		</div>
+		<div class="searchBox">
+			<input class="input" type="text"
+				placeholder="Search for products, brands and more" />
+			<div class="search-logo">
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</div>
+		</div>
+		<div class="loginBox" style="display: flex;">
+			<th:block
+				th:if="${session.customer == null and session.admin == null}">
+				<div class="login" style="margin-right: 10px;">
+					<a href="/customer/signup">Register</a>
+				</div>
+				<div class="login" style="margin-right: 30px;">
+					<a   href="/login">Login</a>
+				</div>
+			</th:block>
+			<th:block th:if="${session.customer}">
+				<div class="login" style="margin-right: 10px;">
+				 <a href="/customer/fetch-products">ViewProducts</a> 
+				 </div>
+				 <div class="login" style="margin-right: 30px;">
+					<a href="/logout">Logout
+						<i class="fa fa-sign-out" aria-hidden="true"> </i>
+						</div>
+					</a>
+				</div>
+			</th:block>
+		</div>
+	</div>
+</body>
+</html>

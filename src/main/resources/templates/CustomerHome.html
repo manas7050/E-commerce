@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Action Page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+body {
+	background: #f8f9fa;
+	font-family: 'Roboto', sans-serif;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+}
+
+.card1 {
+	width: 100%;
+	max-width: 400px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body1 {
+	padding: 2rem;
+	text-align: center;
+}
+
+.card-title1 {
+	margin-bottom: 1.5rem;
+	font-size: 1.5rem;
+	color: #333;
+}
+
+.card1 button {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0;
+	border: none;
+	border-radius: 5px;
+	background-color: #007bff;
+	color: white;
+	font-weight: bold;
+	transition: background-color 0.3s;
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-family: 'Arial', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background-color: #007bff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button-link:hover {
+	background-color: #0056b3;
+}
+
+.card1 button:hover {
+	background-color: #0056b3;
+}
+
+.card1 a {
+	color: white;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 1.5; /* Vertically center text */
+}
+
+.card1 button a:hover {
+	text-decoration: none;
+}
+</style>
+<th:block th:insert="~{header.html}"></th:block>
+</head>
+<body>
+	<th:block th:insert="~{navbar.html}"></th:block>
+	<h2 th:text="${fail}"></h2>
+	<h2 th:text="${pass}"></h2>
+	<div class="container">
+		<div class="card1">
+			<div class="card-body1">
+
+				<!--/* <button id="bottone1"><a href="/customer/fetch-products">View Products</a></button>*/-->
+				<button id="bottone2">
+					<a href="/customer/fetch-cart">View Cart</a>
+				</button>
+				<button id="bottone3">
+					<a href="/customer/fetch-orders">View Orders</a>
+				</button>
+			</div>
+		</div>
+	</div>
+	<th:block th:insert="~{footer.html}"></th:block>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
